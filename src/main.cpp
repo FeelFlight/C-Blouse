@@ -5,6 +5,7 @@
 #include <Wire.h>
 #include <SeeedOLED.h>
 #include <pgmspace.h>
+#include <PubSubClient.h>
 
 #define BUILD_VERSION        REPLACE_WITH_CURRENT_VERSION
 #define ULR_FIRMWARE_BIN     "http://s3.amazonaws.com/feelflight/firmware/blouse.bin"
@@ -34,7 +35,7 @@ void checkForNewFirmware(void){
 void connectToWifi(void){
 
   WiFi.begin("WLANSSID", "WLANPASSWD");
-  
+
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
     Serial.print(".");

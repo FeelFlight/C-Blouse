@@ -12,8 +12,6 @@ script:
 - "./updateBuildVersion.sh"
 - sed -i "s/WLANSSID/$WLANSSID/g"     src/main.cpp
 - sed -i "s/WLANPASSWD/$WLANPASSWD/g" src/main.cpp
-- curl https://codeload.github.com/AnsgarSchmidt/OLED_Display_128X64/zip/master -o lib/seed-oled.zip
-- cd lib && unzip seed-oled.zip && cd ..
 - platformio run
 - cp .pioenvs/huzzah/firmware.bin upload/blouse.bin
 deploy:
