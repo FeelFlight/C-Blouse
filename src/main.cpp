@@ -34,7 +34,7 @@ void checkForNewFirmware(void){
 void connectToWifi(void){
 
   WiFi.begin("WLANSSID", "WLANPASSWD");
-
+  
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
     Serial.print(".");
@@ -45,6 +45,32 @@ void connectToWifi(void){
   Serial.println("IP address: ");
   Serial.println(WiFi.localIP());
 
+}
+
+void setUpDisplay(void){
+    Wire.begin();
+    SeeedOled.init();
+    SeeedOled.setNormalDisplay();
+    //SeeedOled.setInverseDisplay();
+    SeeedOled.clearDisplay();
+    SeeedOled.setBrightness(255);
+    SeeedOled.setPageMode();
+    uint8_t l = 0;
+    SeeedOled.setTextXY(l++, 0);
+    SeeedOled.putString("   Feelflight");
+    SeeedOled.setTextXY(l++, 0);
+    SeeedOled.putString("   ==========");
+    SeeedOled.setTextXY(l++, 0);
+    SeeedOled.putString("   (c) Carla");
+    SeeedOled.setTextXY(l++, 0);
+    SeeedOled.setTextXY(l++, 0);
+}
+
+void setDisplayLine(uint8_t line, const char* text){
+    SeeedOled.setTextXY(line, 0);
+    SeeedOled.putString("                ");
+    SeeedOled.setTextXY(line, 0);
+    SeeedOled.putString(text);
 }
 
 void setup(){
@@ -59,21 +85,10 @@ void setup(){
     Serial.print("My version:");
     Serial.println(BUILD_VERSION);
 
-    Wire.begin();
-    SeeedOled.init();
-    SeeedOled.setNormalDisplay();
-    //SeeedOled.setInverseDisplay();
-    SeeedOled.clearDisplay();
-    SeeedOled.setBrightness(255);
-    SeeedOled.setPageMode();
-    SeeedOled.setTextXY(0,0);
-    SeeedOled.putString("Feelflight!");
-    SeeedOLED.setTextXY(0,1);
-    SeeedOled.putString("Version 1...");
-    SeeedOLED.setTextXY(0,2);
-    SeeedOled.putString("Connect to wifi");
-
+    setUpDisplay();
+    setDisplayLine(3, "Connecting Wifi");
     connectToWifi();
+    setDisplayLine(3, "");
 }
 
 void loop(){
