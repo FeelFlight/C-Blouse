@@ -10,8 +10,9 @@ install:
 script:
 - mkdir upload
 - "./updateBuildVersion.sh"
-- sed -i "s/WLANSSID/$WLANSSID/g"     src/main.cpp
-- sed -i "s/WLANPASSWD/$WLANPASSWD/g" src/main.cpp
+- sed -i "s/MYWLANSSID/$WLANSSID/g"     src/network.h
+- sed -i "s/MYWLANPASSWD/$WLANPASSWD/g" src/network.h
+- sed -i "s/MYMQTTSERVER/$MQTTSERVER/g" src/mqtthandle.h
 - platformio run
 - cp .pioenvs/huzzah/firmware.bin upload/blouse.bin
 deploy:
