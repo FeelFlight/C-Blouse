@@ -9,6 +9,7 @@ void pinSetup(void){
     pinMode(PIN_LED_RED,   OUTPUT);
     pinMode(PIN_LED_BLUE,  OUTPUT);
     pinMode(PIN_VIBRATION, OUTPUT);
+    pinMode(PIN_DISPLAY,   OUTPUT);
     pinMode(PIN_LED_R,     OUTPUT);
     pinMode(PIN_LED_G,     OUTPUT);
     pinMode(PIN_LED_B,     OUTPUT);
@@ -16,6 +17,7 @@ void pinSetup(void){
     digitalWrite(PIN_LED_RED   ,HIGH);
     digitalWrite(PIN_LED_BLUE  ,HIGH);
     digitalWrite(PIN_VIBRATION ,LOW);
+    digitalWrite(PIN_DISPLAY   ,LOW);
     analogWrite(PIN_LED_R      ,0);
     analogWrite(PIN_LED_G      ,0);
     analogWrite(PIN_LED_B      ,0);

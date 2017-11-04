@@ -13,6 +13,7 @@
 #define PIN_15         15
 #define PIN_16         16
 
+#define PIN_DISPLAY   PIN_16
 #define PIN_VIBRATION PIN_15
 #define PIN_LED_R     PIN_MISO
 #define PIN_LED_G     PIN_MOSI

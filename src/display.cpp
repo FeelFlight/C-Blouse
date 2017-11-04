@@ -2,8 +2,11 @@
 #include <Wire.h>
 #include <SeeedOLED.h>
 #include <pgmspace.h>
+#include "display.h"
+#include "pin.h"
 
 void displaySetup(void){
+    displayPower(true);
     Wire.begin();
     SeeedOled.init();
     SeeedOled.setNormalDisplay();
@@ -38,4 +41,13 @@ void displayInverted (bool state){
   }else{
     SeeedOled.setNormalDisplay();
   }
+}
+
+void displayPower(bool state){
+    if (state){
+        digitalWrite(PIN_DISPLAY, true);
+    }else{
+        digitalWrite(PIN_DISPLAY, false);
+    }
+
 }
